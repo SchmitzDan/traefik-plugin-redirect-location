@@ -1,0 +1,8 @@
+displayName: Modify refirect location
+type: middleware
+import: github.com/SchmitzDan/traefik-plugin-redirect-location
+
+summary: 'Modify the redirect location of the response'
+
+testData:
+  default: true
