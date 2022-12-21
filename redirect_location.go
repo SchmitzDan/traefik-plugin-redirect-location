@@ -131,7 +131,6 @@ func (r *responseWriter) handleRewrites(location string) string {
 func (r *responseWriter) WriteHeader(statusCode int) {
 	// only manipulate if redirect
 	if statusCode > 300 && statusCode < 400 {
-
 		// get header value
 		// as we are handling a redirect there should be one and only one location header
 		location := r.writer.Header().Get(locationHeader)
