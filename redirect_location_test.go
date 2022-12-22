@@ -58,7 +58,7 @@ func TestRewrites(t *testing.T) {
 
 			next := func(rw http.ResponseWriter, req *http.Request) {
 				rw.Header().Add("Location", test.locationBefore)
-				rw.WriteHeader(301)
+				rw.WriteHeader(http.StatusMovedPermanently)
 			}
 
 			redirectLocation, err := New(context.Background(), http.HandlerFunc(next), config, "redirectLocation")
@@ -136,7 +136,7 @@ func TestDefaultHandling(t *testing.T) {
 		t.Run(test.desc, func(t *testing.T) {
 			next := func(rw http.ResponseWriter, req *http.Request) {
 				rw.Header().Add("Location", test.locationBefore)
-				rw.WriteHeader(301)
+				rw.WriteHeader(http.StatusMovedPermanently)
 			}
 
 			redirectLocation, err := New(context.Background(), http.HandlerFunc(next), config, "redirectLocation")
