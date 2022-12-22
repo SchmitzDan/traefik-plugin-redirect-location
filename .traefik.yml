@@ -1,4 +1,4 @@
-displayName: Modify refirect location
+displayName: Modify redirect location
 type: middleware
 import: github.com/SchmitzDan/traefik-plugin-redirect-location
 
