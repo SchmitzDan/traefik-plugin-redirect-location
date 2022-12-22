@@ -101,10 +101,10 @@ func (r *responseWriter) defaultHandling(location string) string {
 
 	host := r.request.Header.Get("X-Forwarded-Host")
 
-	if locationURL.Host == host || locationURL.Host == "" {
+	if locationURL.Hostname() == host || locationURL.Host == "" {
 		// path prefix
 		prefix := r.request.Header.Get("X-Forwarded-Prefix")
-		if strings.HasPrefix(strings.TrimPrefix(locationURL.Path, "/"), prefix) {
+		if strings.HasPrefix(strings.TrimPrefix(locationURL.Path, "/"), strings.TrimPrefix(prefix, "/")) {
 			// it seems the service has handled the removed prefix correct so do nothing
 		} else {
 			oldPath := locationURL.Path
